@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class CharacterAnimator : ICharacterAnimator {
     public Animator Animator { get; set; }
-    public CharacterAnimation Animation { get; set; }
-    public CharacterState State { get; set; }
+
+    private CharacterDirection direction;
+    private CharacterState state;
+    private CharacterAnimation animation;
 
     /// <summary>
     /// Animações do personagem.
@@ -26,40 +28,55 @@ public class CharacterAnimator : ICharacterAnimator {
         };
     }
 
-    public void ChangeState(CharacterDirection direction, bool moving) {
-        CharacterAnimation _state = CharacterAnimation.IdleUp;
+    public CharacterState GetState() {
+        return state;
+    }
+
+    public CharacterAnimation GetAnimation() {
+        return animation;
+    }
+
+    public CharacterDirection GetDirection() {
+        return direction;
+    }
+
+    public void ChangeState(CharacterState state, CharacterDirection direction, bool moving) {
+        this.state = state;
+        this.direction = direction;
+
+        CharacterAnimation animation = CharacterAnimation.IdleUp;
 
         switch (direction) {
             case CharacterDirection.Up: 
             case CharacterDirection.UpRight: 
             case CharacterDirection.UpLeft:
-                _state = moving ? CharacterAnimation.WalkUp : CharacterAnimation.IdleUp;
+                animation = moving ? CharacterAnimation.WalkUp : CharacterAnimation.IdleUp;
                 break;
 
             case CharacterDirection.Down: 
             case CharacterDirection.DownRight:
             case CharacterDirection.DownLeft:
-                _state = moving ? CharacterAnimation.WalkDown : CharacterAnimation.IdleDown;
+                animation = moving ? CharacterAnimation.WalkDown : CharacterAnimation.IdleDown;
                 break;
 
             case CharacterDirection.Left:
-                _state = moving ? CharacterAnimation.WalkLeft : CharacterAnimation.IdleLeft;
+                animation = moving ? CharacterAnimation.WalkLeft : CharacterAnimation.IdleLeft;
                 break;
 
             case CharacterDirection.Right:
-                _state = moving ? CharacterAnimation.WalkRight : CharacterAnimation.IdleRight;
+                animation = moving ? CharacterAnimation.WalkRight : CharacterAnimation.IdleRight;
                 break;
         }
 
-        ChangeAnimationState(_state);
+        ChangeAnimationState(animation);
     }
 
-    private void ChangeAnimationState(CharacterAnimation newState) {
-        if (Animation == newState) {
+    private void ChangeAnimationState(CharacterAnimation newAnimation) {
+        if (animation == newAnimation) {
             return;
         }
 
-        Animator.Play(states[newState]);
-        Animation = newState;
+        Animator.Play(states[newAnimation]);
+        animation = newAnimation;
     }
 }
