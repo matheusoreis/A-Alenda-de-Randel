@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
-    private const float Speed = 1.8f;
+    private const float Speed = 2.5f;
 
     /// <summary>
     /// Controla a animação do personagem.
@@ -20,30 +20,18 @@ public class Character : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        var x = Input.GetAxis("Horizontal");
-        var y = Input.GetAxis("Vertical");
+        var x = Input.GetAxisRaw("Horizontal");
+        var y = Input.GetAxisRaw("Vertical");
 
-        if (x > 0) {
-            x = 1;
-        }
-        else if (x < 0) {
-            x = -1;
-        }
-
-        if (y > 0) {
-            y = 1;
-        }
-        else if (y < 0) {
-            y = -1;
-        }
-
+        state = GetState(x, y);
         direction = GetMovementDirection(x, y);
 
         transform.position += new Vector3(x * Speed * Time.deltaTime, y * Speed * Time.deltaTime, 0);
-        animator.ChangeState(direction, (x != 0 || y != 0));
+
+        animator.ChangeState(state, direction, (x != 0 || y != 0));
     }
 
-    private CharacterDirection GetMovementDirection(float x, float y) {
+    CharacterDirection GetMovementDirection(float x, float y) {
         if (x == 0 && y > 0) {
             return CharacterDirection.Up;
         }
@@ -77,5 +65,9 @@ public class Character : MonoBehaviour {
         }
 
         return direction;
+    }
+
+    CharacterState GetState(float x, float y) {
+        return (x != 0 || y != 0) ? CharacterState.Moving : CharacterState.Idle;
     }
 }
