@@ -7,10 +7,10 @@ TextureImporter:
     second: 01_0
   - first:
       213: -8314853801317715943
-    second: GrassCanto-01
+    second: 01_1
   - first:
       213: -6316419149885394363
-    second: GrassCanto-2
+    second: 01_2
   - first:
       213: 4552446279970383544
     second: 01_3
@@ -76,25 +76,25 @@ TextureImporter:
     second: 01_23
   - first:
       213: -416395349854027723
-    second: Grass-01
+    second: 01_24
   - first:
       213: 1024357817516637407
-    second: Grass-02
+    second: 01_25
   - first:
       213: -3392011988205855335
-    second: Grass-03
+    second: 01_26
   - first:
       213: 3744821373646327011
-    second: GrassCanto-3
+    second: 01_27
   - first:
       213: -897164058180755137
-    second: GrassCanto-4
+    second: 01_28
   - first:
       213: -7045001090665552724
-    second: Estrada-01
+    second: 01_29
   - first:
       213: 6621803654902097733
-    second: Estrada-02
+    second: 01_30
   - first:
       213: 3762096497942767818
     second: 01_31
@@ -196,13 +196,13 @@ TextureImporter:
     second: 01_63
   - first:
       213: -1167568614161526388
-    second: Grass-04
+    second: 01_64
   - first:
       213: 3504611573090542671
-    second: Grass-05
+    second: 01_65
   - first:
       213: -1099686729094406523
-    second: Grass-06
+    second: 01_66
   - first:
       213: 5825544022965902551
     second: 01_67
@@ -268,13 +268,13 @@ TextureImporter:
     second: 01_87
   - first:
       213: 5219746481015027508
-    second: Grass-07
+    second: 01_88
   - first:
       213: -5665871625690178807
-    second: Grass-08
+    second: 01_89
   - first:
       213: 411728414937198150
-    second: Grass-09
+    second: 01_90
   - first:
       213: -6329890084607831635
     second: 01_91
@@ -587,7 +587,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GrassCanto-01
+      name: 01_1
       rect:
         serializedVersion: 2
         x: 144
@@ -608,7 +608,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrassCanto-2
+      name: 01_2
       rect:
         serializedVersion: 2
         x: 192
@@ -986,70 +986,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_21
-      rect:
-        serializedVersion: 2
-        x: 1680
-        y: 528
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 18ec062ea51893b10800000000000000
-      internalID: 1961741340041596545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_22
-      rect:
-        serializedVersion: 2
-        x: 1824
-        y: 528
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c90ab712a1902d3d0800000000000000
-      internalID: -3183471978761969508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_23
-      rect:
-        serializedVersion: 2
-        x: 1872
-        y: 528
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 778d992cb4e68f4a0800000000000000
-      internalID: -6559371585598662537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass-01
+      name: 01_24
       rect:
         serializedVersion: 2
         x: 0
@@ -1070,7 +1007,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass-02
+      name: 01_25
       rect:
         serializedVersion: 2
         x: 48
@@ -1091,7 +1028,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass-03
+      name: 01_26
       rect:
         serializedVersion: 2
         x: 96
@@ -1112,7 +1049,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrassCanto-3
+      name: 01_27
       rect:
         serializedVersion: 2
         x: 144
@@ -1133,7 +1070,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrassCanto-4
+      name: 01_28
       rect:
         serializedVersion: 2
         x: 192
@@ -1154,7 +1091,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Estrada-01
+      name: 01_29
       rect:
         serializedVersion: 2
         x: 240
@@ -1175,7 +1112,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Estrada-02
+      name: 01_30
       rect:
         serializedVersion: 2
         x: 288
@@ -1784,112 +1721,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_59
-      rect:
-        serializedVersion: 2
-        x: 1680
-        y: 480
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d499056ab93a453d0800000000000000
-      internalID: -3218767944757503667
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_60
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 480
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f46cebb004c2244c0800000000000000
-      internalID: -4304829640226191793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_61
-      rect:
-        serializedVersion: 2
-        x: 1776
-        y: 480
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59ae9251627702470800000000000000
-      internalID: 8367819113101912725
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_62
-      rect:
-        serializedVersion: 2
-        x: 1824
-        y: 480
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 87cc1254152932440800000000000000
-      internalID: 4909928896513821816
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_63
-      rect:
-        serializedVersion: 2
-        x: 1872
-        y: 480
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 740980e0998fdc690800000000000000
-      internalID: -7580129261545549753
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass-04
+      name: 01_64
       rect:
         serializedVersion: 2
         x: 0
@@ -1910,7 +1742,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass-05
+      name: 01_65
       rect:
         serializedVersion: 2
         x: 48
@@ -1931,7 +1763,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass-06
+      name: 01_66
       rect:
         serializedVersion: 2
         x: 96
@@ -2330,70 +2162,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 01_85
-      rect:
-        serializedVersion: 2
-        x: 1680
-        y: 432
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: afafb0193717ab170800000000000000
-      internalID: 8194987213122697978
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_86
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 432
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4373d07e4605a7640800000000000000
-      internalID: 5078459924117010228
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_87
-      rect:
-        serializedVersion: 2
-        x: 1776
-        y: 432
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b11f7ceb4f3fad9b0800000000000000
-      internalID: -5054459399271616229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass-07
+      name: 01_88
       rect:
         serializedVersion: 2
         x: 0
@@ -2414,7 +2183,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass-08
+      name: 01_89
       rect:
         serializedVersion: 2
         x: 48
@@ -2435,7 +2204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass-09
+      name: 01_90
       rect:
         serializedVersion: 2
         x: 96
@@ -2829,69 +2598,6 @@ TextureImporter:
       bones: []
       spriteID: d07e7de5f12b132b0800000000000000
       internalID: -5606504213294618867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_109
-      rect:
-        serializedVersion: 2
-        x: 1680
-        y: 384
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5ccc51f06b1b096f0800000000000000
-      internalID: -679848148237693755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_110
-      rect:
-        serializedVersion: 2
-        x: 1728
-        y: 384
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 397d4d51207b8c230800000000000000
-      internalID: 3659375916822615955
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 01_111
-      rect:
-        serializedVersion: 2
-        x: 1776
-        y: 384
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 288876c55fa7dfa50800000000000000
-      internalID: 6556531826757175426
       vertices: []
       indices: 
       edges: []
@@ -3774,6 +3480,90 @@ TextureImporter:
       bones: []
       spriteID: 547a799fea3e77d60800000000000000
       internalID: 7888023613013993285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae0bbb5ee65414d0800000000000000
+      internalID: -3164809056393425246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 528
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6eea095c98d2f30800000000000000
+      internalID: 4552446279970383544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 184
+        width: 1920
+        height: 392
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18ec062ea51893b10800000000000000
+      internalID: 1961741340041596545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 01_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1920
+        height: 576
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c90ab712a1902d3d0800000000000000
+      internalID: -3183471978761969508
       vertices: []
       indices: 
       edges: []
