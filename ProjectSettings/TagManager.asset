@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2515614951
+    locked: 0
+  - name: Mask
+    uniqueID: 2888693225
+    locked: 0
+  - name: Fringe
+    uniqueID: 2710351813
+    locked: 0
+  - name: Player
+    uniqueID: 3439316689
+    locked: 0
