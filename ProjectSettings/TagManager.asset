@@ -47,9 +47,9 @@ TagManager:
   - name: Mask
     uniqueID: 2888693225
     locked: 0
-  - name: Fringe
-    uniqueID: 2710351813
-    locked: 0
   - name: Player
     uniqueID: 3439316689
+    locked: 0
+  - name: Fringe
+    uniqueID: 2710351813
     locked: 0
