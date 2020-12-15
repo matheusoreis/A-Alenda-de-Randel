@@ -47,3 +47,18 @@ TagManager:
   - name: Fringe
     uniqueID: 3439316689
     locked: 0
+  - name: Terrain
+    uniqueID: 838687619
+    locked: 0
+  - name: Rocks
+    uniqueID: 3010454541
+    locked: 0
+  - name: Trunks
+    uniqueID: 3247749003
+    locked: 0
+  - name: Objects
+    uniqueID: 4253254161
+    locked: 0
+  - name: Top
+    uniqueID: 1457713767
+    locked: 0
