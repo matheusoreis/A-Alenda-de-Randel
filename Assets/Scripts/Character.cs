@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : MonoBehaviour {
-    private const float Speed = 2.5f;
+    private const float Speed = 5f;
 
     /// <summary>
     /// Controla a animação do personagem.
