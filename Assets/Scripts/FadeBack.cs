@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class FadeBack : MonoBehaviour {
@@ -18,7 +16,6 @@ public class FadeBack : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-
         // Condição para verificar se é um Sprite ou Tilemap
         if (IsTileChoise == true) {
             if (collision.gameObject.CompareTag("Player")) {
@@ -30,19 +27,15 @@ public class FadeBack : MonoBehaviour {
                 spriteRenderer.color = new Color(1f, 1f, 1f, Transparent);
             }
         }
-
     }
 
     void OnTriggerExit2D(Collider2D collision) {
-
         // Condição para verificar se é um Sprite ou Tilemap
         if (IsTileChoise == true) {
             tileRenderer.color = new Color(1f, 1f, 1f, 1f);
         }
         else {
             spriteRenderer.color = new Color(1f, 1f, 1f, 1f);
-        }
-        
+        }       
     }
-
 }
