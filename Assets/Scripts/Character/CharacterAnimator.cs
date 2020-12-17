@@ -96,6 +96,16 @@ public class CharacterAnimator : ICharacterAnimator {
                 ChangeShieldState(direction);
 
                 break;
+
+            case CharacterState.Rolling:
+                if (!ChangeRollState(direction)) {
+                    // Verifica se a animação terminou.
+                    if (IsAnimationEnded()) {
+                        State = CharacterState.RollingCompleted;
+                    }
+                }
+
+                break;
         }
     }
 
@@ -125,6 +135,34 @@ public class CharacterAnimator : ICharacterAnimator {
         }
 
         ChangeAnimationState(animation);
+    }
+
+    private bool ChangeRollState(CharacterDirection direction) {
+        var animation = CharacterAnimation.RollDown;
+
+        switch (direction) {
+            case CharacterDirection.Up:
+            case CharacterDirection.UpRight:
+            case CharacterDirection.UpLeft:
+                animation = CharacterAnimation.RollUp;
+                break;
+
+            case CharacterDirection.Down:
+            case CharacterDirection.DownRight:
+            case CharacterDirection.DownLeft:
+                animation = CharacterAnimation.RollDown;
+                break;
+
+            case CharacterDirection.Left:
+                animation = CharacterAnimation.RollLeft;
+                break;
+
+            case CharacterDirection.Right:
+                animation = CharacterAnimation.RollRight;
+                break;
+        }
+
+        return ChangeAnimationState(animation);
     }
 
     private bool ChangeJumpingState(CharacterDirection direction) {

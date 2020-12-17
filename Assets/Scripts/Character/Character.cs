@@ -8,7 +8,9 @@ public class Character : MonoBehaviour {
     public Attribute Attributes { get; set; }
     public AttributeGrowth AttributeStyle { get; set; }
 
-    private const float Speed = 5f;
+    public const float SpeedDefault = 5f;
+    public float Speed = SpeedDefault;
+    public const float SpeedIsRolling = 10f;
 
     /// <summary>
     /// Controla a animação do personagem.
@@ -23,6 +25,7 @@ public class Character : MonoBehaviour {
     private bool isAttackingWithSword;
     private bool isAttackingWithBow;
     private bool isShieldPressed;
+    private bool isRolling;
     private bool canMove = true;
 
     private float x;
@@ -126,12 +129,24 @@ public class Character : MonoBehaviour {
             }
         }
 
+        if (Input.GetButtonDown("Rolling")) {
+
+            // Só permite rolar se não estiver atacando com a espada e com o arco.
+            if (!isShieldPressed && !isAttackingWithSword && !isAttackingWithBow) {
+                isRolling = true;
+
+                Speed = SpeedIsRolling;
+                               
+            }
+
+        }
+
         // Obtem a direção do personagem.
         // Somente troca de direção enquanto não está pulando ou atacando.
         // A animação fica presa quando no momento do pulo ou ataque a direção for alterada várias vezes.
 
         // Mas permite trocar de posição enquanto está com o escudo.
-        if (!isJumped && !isAttackingWithSword && !isAttackingWithBow) {
+        if (!isJumped && !isAttackingWithSword && !isAttackingWithBow && !isRolling) {
             direction = GetMovementDirection(x, y);
         }
 
@@ -194,6 +209,12 @@ public class Character : MonoBehaviour {
             isJumped = false;
         }
 
+        // Se a animação de rolar terminar, devolve para o estado antigo.
+        if(animator.State == CharacterState.RollingCompleted) {
+            isRolling = false;
+            Speed = SpeedDefault;
+        }
+
         if (animator.State == CharacterState.AttackingBowCompleted ) {
             isAttackingWithBow = false;
             canMove = true;
@@ -207,8 +228,8 @@ public class Character : MonoBehaviour {
         state = CharacterState.Idle;
 
         if (canMove) {
-            // Se estiver movendo-se e não estiver pulando.
-            if (x != 0 || y != 0 && !isJumped) {
+            // Se estiver movendo-se e não estiver pulando e rolando.
+            if (x != 0 || y != 0 && !isJumped && !isRolling) {
                 state = CharacterState.Moving;
             }
         }
@@ -218,16 +239,24 @@ public class Character : MonoBehaviour {
             state = CharacterState.Jumping;
         }
 
+        // Se estiver atacando com a espada.
         if (isAttackingWithSword) {
             state = CharacterState.AttackingSword;
         }
 
+        // Se estiver atacando com o arco.
         if (isAttackingWithBow) {
             state = CharacterState.AttackingBow;
         }
 
+        // Se estiver usando o escudo.
         if (isShieldPressed) {
             state = CharacterState.UsingShield;
+        }
+
+        // Se estiver rolando.
+        if (isRolling) {
+            state = CharacterState.Rolling;
         }
 
         animator.ChangeState(state, direction, (x != 0 || y != 0));

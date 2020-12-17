@@ -7,5 +7,7 @@
     AttackingBowCompleted,
     Jumping,
     JumpingCompleted,
-    UsingShield
+    UsingShield,
+    Rolling,
+    RollingCompleted
 }
