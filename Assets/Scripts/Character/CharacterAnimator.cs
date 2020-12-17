@@ -3,10 +3,8 @@ using UnityEngine;
 
 public class CharacterAnimator : ICharacterAnimator {
     public Animator Animator { get; set; }
-
-    private CharacterDirection direction;
-    private CharacterState state;
-    private CharacterAnimation animation;
+    public CharacterState State { get; set; }
+    public CharacterAnimation Animation { get; set; }
 
     /// <summary>
     /// Animações do personagem.
@@ -53,32 +51,65 @@ public class CharacterAnimator : ICharacterAnimator {
         };
     }
 
-    public CharacterState GetState() {
-        return state;
-    }
-
-    public CharacterAnimation GetAnimation() {
-        return animation;
-    }
-
-    public CharacterDirection GetDirection() {
-        return direction;
-    }
-
     public void ChangeState(CharacterState state, CharacterDirection direction, bool moving) {
-        this.state = state;
-        this.direction = direction;
+        State = state;
 
-        CharacterAnimation animation = CharacterAnimation.IdleUp;
+        switch (state) {
+            case CharacterState.Moving:
+            case CharacterState.Idle:
+                ChangeMovingState(direction, moving);
+
+                break;
+
+            case CharacterState.Jumping:
+                // Se não houve uma alteração na animação do pulo.
+                if (!ChangeJumpingState(direction)) {
+                    // Verifica se a animação terminou.
+                    if (IsAnimationEnded()) {
+                        State = CharacterState.JumpingCompleted;
+                    }
+                }
+
+                break;
+
+            case CharacterState.AttackingSword:
+                if (!ChangeAttackingSwordState(direction)) {
+                    // Verifica se a animação de pulo terminou.
+                    if (IsAnimationEnded()) {
+                        State = CharacterState.AttackingSwordCompleted;
+                    }
+                }
+
+                break;
+
+            case CharacterState.AttackingBow:
+                if (!ChangeAttackingBowState(direction)) {
+                    // Verifica se a animação de pulo terminou.
+                    if (IsAnimationEnded()) {
+                        State = CharacterState.AttackingBowCompleted;
+                    }
+                }
+
+                break;
+
+            case CharacterState.UsingShield:
+                ChangeShieldState(direction);
+
+                break;
+        }
+    }
+
+    private void ChangeMovingState(CharacterDirection direction, bool moving) {
+        var animation = CharacterAnimation.IdleDown;
 
         switch (direction) {
-            case CharacterDirection.Up: 
-            case CharacterDirection.UpRight: 
+            case CharacterDirection.Up:
+            case CharacterDirection.UpRight:
             case CharacterDirection.UpLeft:
                 animation = moving ? CharacterAnimation.WalkUp : CharacterAnimation.IdleUp;
                 break;
 
-            case CharacterDirection.Down: 
+            case CharacterDirection.Down:
             case CharacterDirection.DownRight:
             case CharacterDirection.DownLeft:
                 animation = moving ? CharacterAnimation.WalkDown : CharacterAnimation.IdleDown;
@@ -96,12 +127,130 @@ public class CharacterAnimator : ICharacterAnimator {
         ChangeAnimationState(animation);
     }
 
-    private void ChangeAnimationState(CharacterAnimation newAnimation) {
-        if (animation == newAnimation) {
-            return;
+    private bool ChangeJumpingState(CharacterDirection direction) {
+        var animation = CharacterAnimation.JumpDown;
+
+        switch (direction) {
+            case CharacterDirection.Up:
+            case CharacterDirection.UpRight:
+            case CharacterDirection.UpLeft:
+                animation = CharacterAnimation.JumpUp;
+                break;
+
+            case CharacterDirection.Down:
+            case CharacterDirection.DownRight:
+            case CharacterDirection.DownLeft:
+                animation = CharacterAnimation.JumpDown;
+                break;
+
+            case CharacterDirection.Left:
+                animation = CharacterAnimation.JumpLeft;
+                break;
+
+            case CharacterDirection.Right:
+                animation = CharacterAnimation.JumpRight;
+                break;
+        }
+
+        return ChangeAnimationState(animation);
+    }
+
+    private bool ChangeAttackingSwordState(CharacterDirection direction) {
+        var animation = CharacterAnimation.SwordDown;
+
+        switch (direction) {
+            case CharacterDirection.Up:
+            case CharacterDirection.UpRight:
+            case CharacterDirection.UpLeft:
+                animation = CharacterAnimation.SwordUp;
+                break;
+
+            case CharacterDirection.Down:
+            case CharacterDirection.DownRight:
+            case CharacterDirection.DownLeft:
+                animation = CharacterAnimation.SwordDown;
+                break;
+
+            case CharacterDirection.Left:
+                animation = CharacterAnimation.SwordLeft;
+                break;
+
+            case CharacterDirection.Right:
+                animation = CharacterAnimation.SwordRight;
+                break;
+        }
+
+        return ChangeAnimationState(animation);
+    }
+
+    private bool ChangeAttackingBowState(CharacterDirection direction) {
+        var animation = CharacterAnimation.BowDown;
+
+        switch (direction) {
+            case CharacterDirection.Up:
+            case CharacterDirection.UpRight:
+            case CharacterDirection.UpLeft:
+                animation = CharacterAnimation.BowUp;
+                break;
+
+            case CharacterDirection.Down:
+            case CharacterDirection.DownRight:
+            case CharacterDirection.DownLeft:
+                animation = CharacterAnimation.BowDown;
+                break;
+
+            case CharacterDirection.Left:
+                animation = CharacterAnimation.BowLeft;
+                break;
+
+            case CharacterDirection.Right:
+                animation = CharacterAnimation.BowRight;
+                break;
+        }
+
+        return ChangeAnimationState(animation);
+    }
+
+    private void ChangeShieldState(CharacterDirection direction) {
+        var animation = CharacterAnimation.ShieldDown;
+
+        switch (direction) {
+            case CharacterDirection.Up:
+            case CharacterDirection.UpRight:
+            case CharacterDirection.UpLeft:
+                animation = CharacterAnimation.ShieldUp;
+                break;
+
+            case CharacterDirection.Down:
+            case CharacterDirection.DownRight:
+            case CharacterDirection.DownLeft:
+                animation = CharacterAnimation.ShieldDown;
+                break;
+
+            case CharacterDirection.Left:
+                animation = CharacterAnimation.ShieldLeft;
+                break;
+
+            case CharacterDirection.Right:
+                animation = CharacterAnimation.ShieldRight;
+                break;
+        }
+
+        ChangeAnimationState(animation);
+    }
+
+    private bool ChangeAnimationState(CharacterAnimation newAnimation) {
+        if (Animation == newAnimation) {
+            return false;
         }
 
         Animator.Play(states[newAnimation]);
-        animation = newAnimation;
+        Animation = newAnimation;
+
+        return true;
+    }
+
+    private bool IsAnimationEnded() {
+        return Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f;
     }
 }

@@ -91,8 +91,8 @@
             MagicResist = 3,
             CritRate = 0.5f,
             CritDamage = 0.5f,
-            ResistCritRate = 0,
-            ResistCritDamage = 0,
+            ResistCritRate = 0.1f,
+            ResistCritDamage = 0.1f,
             Amplification = 0.9f
         };
 
@@ -106,16 +106,16 @@
         balance.Primary[(int)AttributeType.Intelligence] = 10;
 
         balance.IncrementMaxHp = new int[] { 10, 0, 0, 5, 0 };
-        balance.IncrementMaxMp = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementAttack = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementDefense = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementAccuracy = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementEvasion = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementBlock = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementMagicAttack = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementMagicDefense = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementMagicAccuracy = new int[] { 0, 0, 0, 0, 0 };
-        balance.IncrementMagicResist = new int[] { 0, 0, 0, 0, 0 };
+        balance.IncrementMaxMp = new int[] { 10, 0, 0, 0, 5 };
+        balance.IncrementAttack = new int[] { 5, 4, 0, 0, 0 };
+        balance.IncrementDefense = new int[] { 2, 0, 0, 3, 0 };
+        balance.IncrementAccuracy = new int[] { 7, 0, 8, 0, 0 };
+        balance.IncrementEvasion = new int[] { 3, 0, 4, 0, 0 };
+        balance.IncrementBlock = new int[] { 10, 8, 0, 1, 0 };
+        balance.IncrementMagicAttack = new int[] { 10, 0, 0, 0, 5 };
+        balance.IncrementMagicDefense = new int[] { 8, 0, 0, 1, 5 };
+        balance.IncrementMagicAccuracy = new int[] { 5, 0, 5, 0, 1 };
+        balance.IncrementMagicResist = new int[] { 10, 0, 0, 1, 4 };
         balance.IncrementCritRate = new float[] { 0.001f, 0, 0.001f, 0, 0 };
         balance.IncrementCritDamage = new float[] { 0.001f, 0.001f, 0, 0, 0.001f };
         balance.IncrementResistCritRate = new float[] { 0.001f, 0.001f, 0.001f, 0.001f, 0.001f };

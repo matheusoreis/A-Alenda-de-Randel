@@ -19,6 +19,14 @@ public class Character : MonoBehaviour {
     private CharacterState state;
 
     private Rigidbody2D physics;
+    private bool isJumped;
+    private bool isAttackingWithSword;
+    private bool isAttackingWithBow;
+    private bool isShieldPressed;
+    private bool canMove = true;
+
+    private float x;
+    private float y;
 
     public void Allocate() {
         Attributes.Clear();
@@ -57,29 +65,91 @@ public class Character : MonoBehaviour {
 
         Attributes = new Attribute();
         AttributeStyle = AttributeParadigm.Balance;
+        AttributePoints = 5000;
+        Level = 1;
+
+        Allocate();
 
         direction = CharacterDirection.Down;
         animator = new CharacterAnimator(GetComponent<Animator>());
-
         physics = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update() {
+        x = Input.GetAxisRaw("Horizontal");
+        y = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetButtonDown("Jump")) {
+            // Não permite que pule com oturas animações acontecendo.
+            if (!isShieldPressed && !isAttackingWithSword && !isAttackingWithBow) {
+                isJumped = true;
+            }
+        }
+
+        if (Input.GetButtonDown("Fire1")) {
+            // Somente permite atacar enquanto está no chão e sem escudo.
+            // Não há animações do personagem atacando no ar.
+            if (!isJumped && !isShieldPressed) {
+                isAttackingWithSword = true;
+                canMove = false;
+            }
+        }
+
+        if (Input.GetButtonDown("Fire2")) {
+            // Somente permite atacar enquanto está no chão e sem escudo.
+            // Não há animações do personagem atacando no ar.
+            if (!isJumped && !isShieldPressed) {
+                isAttackingWithBow = true;
+                canMove = false;
+            }
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift)) {
+            // Somente permite atacar enquanto está no chão.
+            // Não há animações do personagem atacando no ar.
+            if (!isJumped) {
+                isShieldPressed = true;
+
+                // Assim que o escudo for sacado, desabilita os ataques.
+                isAttackingWithBow = false;
+                isAttackingWithSword = false;
+                canMove = false;
+            }
+        }
+        else {
+            isShieldPressed = false;
+
+            // Só permite andar novamente se não estiver atacando com a espada E com o arco.
+            if (!isAttackingWithSword && !isAttackingWithBow) {
+                canMove = true;
+            }
+        }
+
+        // Obtem a direção do personagem.
+        // Somente troca de direção enquanto não está pulando ou atacando.
+        // A animação fica presa quando no momento do pulo ou ataque a direção for alterada várias vezes.
+
+        // Mas permite trocar de posição enquanto está com o escudo.
+        if (!isJumped && !isAttackingWithSword && !isAttackingWithBow) {
+            direction = GetMovementDirection(x, y);
+        }
+
+        // Define o estado do personagem.
+        ChangeState(x, y);
     }
 
     private void FixedUpdate() {
-        var x = Input.GetAxisRaw("Horizontal");
-        var y = Input.GetAxisRaw("Vertical");
+        // Move o personagem.
+        // Unity moves a Rigidbody in each FixedUpdate call
+        if (canMove) {
+            Move(x, y);
+        }
+    }
 
-        state = GetState(x, y);
-        direction = GetMovementDirection(x, y);
-
+    private void Move(float x, float y) {
         var move = new Vector3(x, y, 0).normalized * Speed * Time.deltaTime;
         physics.MovePosition(transform.position + move);
-
-        animator.ChangeState(state, direction, (x != 0 || y != 0));
     }
 
     CharacterDirection GetMovementDirection(float x, float y) {
@@ -118,7 +188,48 @@ public class Character : MonoBehaviour {
         return direction;
     }
 
-    CharacterState GetState(float x, float y) {
-        return (x != 0 || y != 0) ? CharacterState.Moving : CharacterState.Idle;
+    private void ChangeState(float x, float y) {
+        // Se a animação de pulo terminar, devolve para o estado antigo.
+        if (animator.State == CharacterState.JumpingCompleted) {
+            isJumped = false;
+        }
+
+        if (animator.State == CharacterState.AttackingBowCompleted ) {
+            isAttackingWithBow = false;
+            canMove = true;
+        }
+
+        if (animator.State == CharacterState.AttackingSwordCompleted) {
+            isAttackingWithSword = false;
+            canMove = true;
+        }
+
+        state = CharacterState.Idle;
+
+        if (canMove) {
+            // Se estiver movendo-se e não estiver pulando.
+            if (x != 0 || y != 0 && !isJumped) {
+                state = CharacterState.Moving;
+            }
+        }
+
+        // Se estiver pulando.
+        if (isJumped) {
+            state = CharacterState.Jumping;
+        }
+
+        if (isAttackingWithSword) {
+            state = CharacterState.AttackingSword;
+        }
+
+        if (isAttackingWithBow) {
+            state = CharacterState.AttackingBow;
+        }
+
+        if (isShieldPressed) {
+            state = CharacterState.UsingShield;
+        }
+
+        animator.ChangeState(state, direction, (x != 0 || y != 0));
     }
 }

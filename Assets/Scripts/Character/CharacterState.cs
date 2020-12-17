@@ -1,6 +1,11 @@
 ﻿public enum CharacterState {
     Idle,
     Moving,
-    Attacking,
-    Casting,
+    AttackingSword,
+    AttackingSwordCompleted,
+    AttackingBow,
+    AttackingBowCompleted,
+    Jumping,
+    JumpingCompleted,
+    UsingShield
 }
