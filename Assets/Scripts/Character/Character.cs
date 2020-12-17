@@ -90,7 +90,7 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButtonDown("Sword")) {
+        if (Input.GetButtonDown("Fire1")) {
             // Somente permite atacar enquanto está no chão e sem escudo.
             // Não há animações do personagem atacando no ar.
             if (!isJumped && !isShieldPressed) {
@@ -99,7 +99,7 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButtonDown("Bow")) {
+        if (Input.GetButtonDown("Fire2")) {
             // Somente permite atacar enquanto está no chão e sem escudo.
             // Não há animações do personagem atacando no ar.
             if (!isJumped && !isShieldPressed) {
@@ -108,7 +108,7 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButton("Shield")) {
+        if (Input.GetKey(KeyCode.LeftShift)) {
             // Somente permite atacar enquanto está no chão.
             // Não há animações do personagem atacando no ar.
             if (!isJumped) {
@@ -129,7 +129,7 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButton("Rolling")) {
+        if (Input.GetButtonDown("Rolling")) {
 
             // Só permite rolar se não estiver atacando com a espada e com o arco.
             if (!isShieldPressed && !isAttackingWithSword && !isAttackingWithBow) {
