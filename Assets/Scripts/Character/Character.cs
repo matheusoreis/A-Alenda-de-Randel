@@ -79,23 +79,14 @@ public class Character : MonoBehaviour {
         physics = GetComponent<Rigidbody2D>();
     }
 
-    private struct PlayerInputConstants {
-
-        public const string Horizontal = "Horizontal";
-        public const string Vertical = "Vertical";
-        public const string Sword = "Sword";
-        public const string Bow = "Bow";
-        public const string Shield = "Shield";
-        public const string Rolling = "Rolling";
-        public const string Jump = "Jump";
-    }
-
     // Update is called once per frame
     void Update() {
         x = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Horizontal);
         //Input.GetAxisRaw("Horizontal");
         y = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical);
-            //Input.GetAxisRaw("Vertical");
+        //Input.GetAxisRaw("Vertical");
+
+        Debug.Log("X: " + x + " Y: " + y);
 
         if (CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Jump)) {
             // Não permite que pule com oturas animações acontecendo.
@@ -191,11 +182,11 @@ public class Character : MonoBehaviour {
             return CharacterDirection.Down;
         }
 
-        if (x < 0 && y == 0) {
+        if (x < 0 && (y > -0.2 && y < 0.2f)) {
             return CharacterDirection.Left;
         }
 
-        if (x > 0 && y == 0) {
+        if (x > 0 && (y > -0.2 && y < 0.2f)) {
             return CharacterDirection.Right;
         }
 
