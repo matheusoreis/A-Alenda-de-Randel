@@ -136,7 +136,8 @@ public class Character : MonoBehaviour {
                 isRolling = true;
 
                 Speed = SpeedIsRolling;
-                               
+
+                
             }
 
         }
