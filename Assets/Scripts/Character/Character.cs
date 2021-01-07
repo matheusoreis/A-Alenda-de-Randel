@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class Character : MonoBehaviour {
     public int Level { get; set; }
@@ -80,17 +81,21 @@ public class Character : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        x = Input.GetAxisRaw("Horizontal");
-        y = Input.GetAxisRaw("Vertical");
+        x = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Horizontal);
+        //Input.GetAxisRaw("Horizontal");
+        y = CrossPlatformInputManager.GetAxisRaw(PlayerInputConstants.Vertical);
+        //Input.GetAxisRaw("Vertical");
 
-        if (Input.GetButtonDown("Jump")) {
+        Debug.Log("X: " + x + " Y: " + y);
+
+        if (CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Jump)) {
             // Não permite que pule com oturas animações acontecendo.
             if (!isShieldPressed && !isAttackingWithSword && !isAttackingWithBow) {
                 isJumped = true;
             }
         }
 
-        if (Input.GetButtonDown("Sword")) {
+        if (CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Sword)) {
             // Somente permite atacar enquanto está no chão e sem escudo.
             // Não há animações do personagem atacando no ar.
             if (!isJumped && !isShieldPressed) {
@@ -99,7 +104,7 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButtonDown("Bow")) {
+        if (CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Bow)) {
             // Somente permite atacar enquanto está no chão e sem escudo.
             // Não há animações do personagem atacando no ar.
             if (!isJumped && !isShieldPressed) {
@@ -108,7 +113,7 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButton("Shield")) {
+        if (CrossPlatformInputManager.GetButton(PlayerInputConstants.Shield)) {
             // Somente permite atacar enquanto está no chão.
             // Não há animações do personagem atacando no ar.
             if (!isJumped) {
@@ -129,14 +134,15 @@ public class Character : MonoBehaviour {
             }
         }
 
-        if (Input.GetButton("Rolling")) {
+        if (CrossPlatformInputManager.GetButtonDown(PlayerInputConstants.Rolling)) {
 
             // Só permite rolar se não estiver atacando com a espada e com o arco.
             if (!isShieldPressed && !isAttackingWithSword && !isAttackingWithBow) {
                 isRolling = true;
 
                 Speed = SpeedIsRolling;
-                               
+
+                
             }
 
         }
@@ -176,11 +182,11 @@ public class Character : MonoBehaviour {
             return CharacterDirection.Down;
         }
 
-        if (x < 0 && y == 0) {
+        if (x < 0 && (y > -0.2 && y < 0.2f)) {
             return CharacterDirection.Left;
         }
 
-        if (x > 0 && y == 0) {
+        if (x > 0 && (y > -0.2 && y < 0.2f)) {
             return CharacterDirection.Right;
         }
 

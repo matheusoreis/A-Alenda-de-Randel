@@ -6,7 +6,8 @@ using TMPro;
 public class AttributeInterfaceController : MonoBehaviour {
     public Character Character { get; set; }
 
-    public GameObject Panel;
+    public GameObject InventoryPanel;
+    public GameObject StatusPanel;
 
     public Button ButtonStrength;
     public Button ButtonAgility;
@@ -40,7 +41,7 @@ public class AttributeInterfaceController : MonoBehaviour {
     // Necessário atualizar o controle pelo update.
     // O método Start quando iniciado, não possui todas as referências dos controles do canvas.
     private bool alreadyUpdated;
-    private bool visible = true;
+    private bool visible = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -62,8 +63,9 @@ public class AttributeInterfaceController : MonoBehaviour {
             ButtonIntelligence.onClick.AddListener(AddIntelligence);
         }
 
-        if (Panel != null) {
-            Panel.SetActive(visible);
+        if (InventoryPanel != null && StatusPanel != null) {
+            InventoryPanel.SetActive(visible);
+            StatusPanel.SetActive(visible);
         }
     }
 
@@ -75,10 +77,6 @@ public class AttributeInterfaceController : MonoBehaviour {
             UpdateText();
         }
 
-        if (Input.GetKeyDown(KeyCode.C)) {
-            visible = !visible;
-            Panel.SetActive(visible);
-        }
     }
 
     private void AddStrength() {
