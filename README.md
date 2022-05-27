@@ -1,7 +1,29 @@
-# A-Alenda-de-Randel
 
-A lenda de Randel é um RPG que estava em desenvolvimento pela 2eBrain Studio, porém por falência da empresa o projeto teve seu fim e decidimos não continuar.
+## 🛠 A LENDA DE RANDEL
 
-O projeto já conta com muitos sistemas prontos para serem explorados e estudados, movimentação, dia e noite, status, movimento com key e estados como ataque, rolar, defendendo entre outros sistemas que já estão prontos.
 
-Caso utilizem deem os devidos creditos a @dragonick e @leahos
+The Legend of Randel is an RPG that was under development by 2eBrain Studio, but due to the company's bankruptcy the project came to an end and the development team decided not to continue.
+
+A lenda de Randel é um RPG que estava em desenvolvimento pela 2eBrain Studio, porém por falência da empresa o projeto teve seu fim e a equipe de desenvolvimento decidiu não continuar.
+## Autores
+
+- [@omatheusreis](https://www.github.com/omatheusreis)
+- [@dragonick](https://github.com/DragonicK)
+
+
+## License
+
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+
+
+## Features
+
+- Movimentação - Moving
+- Salto - Jump
+- Ataque - Attack
+- Rolar - Roll
+- Defender - Defend
+- Status - Status
+- Dia e Noite - Dye and Night
+- Luz - Light
+
